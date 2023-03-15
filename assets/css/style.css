@@ -1,0 +1,7 @@
+button {
+    outline: blue solid 2px;
+    /* default style for all states */
+}
+button:hover {
+    outline: red solid 2px;
+}
