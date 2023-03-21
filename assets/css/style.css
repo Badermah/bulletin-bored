@@ -1,27 +1,253 @@
 
 .wrapper {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  
+  display: flex;
+  /* flex-wrap: wrap; */
+  align-items: center;
+  justify-content: center;
+}
+
 .carouselbox {
-    width: 480px;
-    height: 320px;
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-  }
-  .prev,.next {
-    width: 100px;
-    height: 30px;
-  
-  }
-  
- #yessur {
-    background-color: orange;
-    width: 100px;
-    height: 30px;
-  }
+  width: 48rem;
+  height: 32rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+/* .prev,.next {
+  width: 100px;
+  height: 30px;
+
+}
+ */
+/* #yessur {
+  background-color: orange;
+  width: 100px;
+  height: 30px;
+} */
+
+/* Buck's code below here */
+
+:root {
+font-size: 62.5%;
+}
+
+* {
+font-family: Arial, Helvetica, sans-serif;
+color: white;
+}
+
+.display {
+background-position: center center;
+background-size: cover;
+width: 100vw;
+height: 100vh;
+overflow: hidden;
+background-image: url(../images/bulletinbgdarkv.png);
+}
+
+.display2 {
+background-position: center center;
+background-size: cover;
+width: 100vw;
+height: 100vh;
+overflow: hidden;
+background-image: url(../images/bulletinbg.png);
+transition: 5s;
+}
+
+.header {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+height: 80vh;
+color: white;
+}
+
+.menu {
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+margin-top: 1.5rem;
+color: white;
+text-align: center;
+}
+
+.selectors {
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+align-items: normal;
+margin-top: 1.8rem;
+margin-left: -28rem;
+max-height: 75vh;
+}
+
+.options {
+display: flex;
+flex-direction: column;
+flex-wrap: wrap;
+justify-content: center;
+align-items: normal;
+margin-top: 1.8rem;
+max-height: 75vh;
+}
+
+.stashed {
+margin-top: .8rem;
+display: flex;
+flex-direction: column;
+align-items: center;
+justify-content: center;
+color: white;
+text-shadow: -1px 1px 2px #000,
+        1px 2px 6px #000,
+        1px -1px 0 #000,
+        -1px -1px 0 #000;
+}
+
+.underline {
+text-decoration: underline;
+text-underline-offset: 1.5rem;
+}
+
+h1 {
+font-size: 5.4rem;
+margin-bottom: 3rem;
+line-height: 1.2;
+text-align: center;
+}
+
+h2 {
+font-size: 4.2rem;
+font-weight: 700;
+margin-bottom: 4rem;
+line-height: 1.2;
+}
+
+h3 {
+font-size: 3rem;
+margin-bottom: 3rem;
+line-height: 1.2;
+}
+
+h4 {
+font-size: 1.8rem ;
+margin-bottom: 1rem;
+line-height: 1.2;
+}
+
+button {
+border: .1rem solid white;
+background-color: transparent;
+color: white;
+font-size: 2rem;
+text-align: center;
+text-decoration: none;
+padding: 2rem 3rem;
+font-size: 3.5rem;
+}
+
+.button2 {
+border: .1rem solid white;
+background-color: transparent;
+color: white;
+font-size: 2rem;
+text-align: center;
+text-decoration: none;
+width: 35rem;
+font-size: 3.5rem;
+margin: 0 1.5rem 3rem 1.5rem;
+}
+
+.button3 {
+border: .1rem solid white;
+background-color: transparent;
+color: white;
+font-size: 2rem;
+text-align: center;
+text-decoration: none;
+width: 25rem;
+font-size: 3.5rem;
+margin: 0 1.5rem 3rem 1.5rem;
+padding: 1rem 1.5rem;
+}
+
+.button4 {
+border: .1rem solid white;
+background-color: transparent;
+color: white;
+font-size: 2rem;
+text-align: center;
+text-decoration: none;
+width: 30rem;
+font-size: 3.5rem;
+margin: 0 1.5rem 3rem 1.5rem;
+padding: 1rem 1.5rem;
+}
+
+.button5 {
+border: .1rem solid white;
+background-color: transparent;
+color: white;
+font-size: 2rem;
+text-align: center;
+text-decoration: none;
+width: 20rem;
+font-size: 3.5rem;
+margin: 3rem 1.5rem 3rem 1.5rem;
+padding: 1rem 1.5rem;
+text-shadow: -1px 1px 2px #000,
+              1px 2px 6px #000,
+              1px -1px 0 #000,
+             -1px -1px 0 #000;
+}
+
+button:hover {
+cursor: pointer;
+box-shadow: 0 .1rem 1.4rem 0 whitesmoke;
+transform: translateY(-.1rem);
+transition: ease-in 150ms;
+}
+
+#newOrOld {
+display: none;
+}
+
+#activityType {
+display: none;
+}
+
+#soloOrGroup { 
+display: none;
+margin-top: 15vh;
+} 
+
+#priceTag {
+display: none;
+margin-top: 15vh;
+}
+
+#summary {
+display: none;
+margin-top: 15vh;
+}
+
+#user-form {
+display: none;
+}
+
+#stashed {
+display: none;  
+}
+
+#container {
+display: none;
+}
+
+#container2 {
+display:none;
+}
