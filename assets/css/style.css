@@ -1,7 +1,27 @@
-button {
-    outline: blue solid 2px;
-    /* default style for all states */
-}
-button:hover {
-    outline: red solid 2px;
-}
+
+.wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  
+.carouselbox {
+    width: 480px;
+    height: 320px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+  }
+  .prev,.next {
+    width: 100px;
+    height: 30px;
+  
+  }
+  
+ #yessur {
+    background-color: orange;
+    width: 100px;
+    height: 30px;
+  }
