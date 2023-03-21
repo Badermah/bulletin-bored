@@ -1,130 +1,186 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bulletin Bored</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <!--style reset added by Buck-->
-    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-</head>
-<body id="display" class="display">
+  </head>
+  <body id="display" class="display">
+    <!--added by Buck-->
+    <header id="header" class="header">
+      <h1 class="underline">Welcome to Bulletin Bored</h1>
+      <button type="button" id="welcome">Let's find something to do</button>
+    </header>
 
-   <!--added by Buck-->
-  <header id="header" class="header">
-    <h1 class="underline">Welcome to Bulletin Bored</h1>
-    <button type="button" id="welcome">Let's find something to do</button>
-  </header>
- 
-  <section id="newOrOld" class="header">
-    <h2 class="underline">What are you thinking?</h2>
-    <button type="button" id="new" class="button2">Something New</button>
-    <button type="button" id="pinned" class="button2">Pinned Ideas</button>
-  </section>
+    <section id="newOrOld" class="header">
+      <h2 class="underline">What are you thinking?</h2>
+      <button type="button" id="new" class="button2">Something New</button>
+      <button type="button" id="pinned" class="button2">Pinned Ideas</button>
+    </section>
 
-  <section id="activityType" class="menu">
-    <h1 class="underline">What sounds good?</h1>
-    <div class="selectors">
-      <button onclick="activityTypeChoice(this)" class="button3" value="any">Any</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="education">Education</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="recreational">Recreational</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="social">Social</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="diy">DIY</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="charity">Charity</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="cooking">Cooking</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="relaxation">Relaxation</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="busywork">Busywork</button>
-      <button onclick="activityTypeChoice(this)" class="button3" value="music">Music</button>
-    </div>
-  </section>
+    <section id="activityType" class="menu">
+      <h1 class="underline">What sounds good?</h1>
+      <div class="selectors">
+        <button onclick="activityTypeChoice(this)" class="button3" value="any">
+          Any
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="education"
+        >
+          Education
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="recreational"
+        >
+          Recreational
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="social"
+        >
+          Social
+        </button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="diy">
+          DIY
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="charity"
+        >
+          Charity
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="cooking"
+        >
+          Cooking
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="relaxation"
+        >
+          Relaxation
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="busywork"
+        >
+          Busywork
+        </button>
+        <button
+          onclick="activityTypeChoice(this)"
+          class="button3"
+          value="music"
+        >
+          Music
+        </button>
+      </div>
+    </section>
 
-  <section id="soloOrGroup" class="menu">
-    <h1 class="underline">Feeling Social?</h1>
-    <div class="options">
-      <button onclick="participants(this)" class="button3" value="any">Any</button>
-      <button onclick="participants(this)" class="button3" value="solo">Solo</button>
-      <button onclick="participants(this)" class="button3" value="group">Group (2+)</button>
-    </div>
-  </section>
+    <section id="soloOrGroup" class="menu">
+      <h1 class="underline">Feeling Social?</h1>
+      <div class="options">
+        <button onclick="participants(this)" class="button3" value="any">
+          Any
+        </button>
+        <button onclick="participants(this)" class="button3" value="solo">
+          Solo
+        </button>
+        <button onclick="participants(this)" class="button3" value="group">
+          Group (2+)
+        </button>
+      </div>
+    </section>
 
-  <section id="priceTag" class="menu">
-    <h1 class="underline">Is Cost a Factor?</h1>
-    <div class="options">
-      <button onclick="cost(this)" class="button3" value="any">Any</button>
-      <button onclick="cost(this)" class="button3" value="free">No Cost</button>
-      <button onclick="cost(this)" class="button3" value="paid">Some Cost</button>
-    </div>
-  </section>
+    <section id="priceTag" class="menu">
+      <h1 class="underline">Is Cost a Factor?</h1>
+      <div class="options">
+        <button onclick="cost(this)" class="button3" value="any">Any</button>
+        <button onclick="cost(this)" class="button3" value="free">
+          No Cost
+        </button>
+        <button onclick="cost(this)" class="button3" value="paid">
+          Some Cost
+        </button>
+      </div>
+    </section>
 
-  <section id="summary" class="menu">
-    <h1 class="underline">Got it!</h1>
-    <h2>So just to be clear...</h2>
-    <h3 id="summaryText"></h3>
-    <button id="letsGooooo" class="button4">Let's do it!</button>
-    <button id="parameterReset" class="button4">Well actually...</button>
-  </section>
-  <!--^ added by Buck ^-->
+    <section id="summary" class="menu">
+      <h1 class="underline">Got it!</h1>
+      <h2>So just to be clear...</h2>
+      <h3 id="summaryText"></h3>
+      <button id="letsGooooo" class="button4">Let's do it!</button>
+      <button id="parameterReset" class="button4">Well actually...</button>
+    </section>
+    <!--^ added by Buck ^-->
 
-    <form id = 'user-form'>
-        <label for="acttype">Choose Activity Type:</label>
-        <select id="acttype" name="acttype">
-          <option value="any">Any</option>
-          <option value="education">Education</option>
-          <option value="recreational">Recreational</option>
-          <option value="social">Social</option>
-          <option value="diy">DIY</option>
-          <option value="charity">Charity</option>
-          <option value="cooking">Cooking</option>
-          <option value="relaxation">Relaxation</option>
-          <option value="busywork">Busywork</option>
-          <option value="music">Music</option>
-        </select>
-        <label for="people">Choose # of People:</label>
-        <select id="people" name="people">
-          <option value="any">Any</option>
-          <option value="solo">Solo (1)</option>
-          <option value="group">Group (2+)</option>
-        </select>
-        <label for="supdog">Choose Cost:</label>
-        <select id="supdog" name="supdog">
-          <option value="any">Any</option>
-          <option value="free">No Cost (0$)</option>
-          <option value="paid">Some Costs ($)</option>
-        </select>
-        <button id='searchBtn' type ='button'>I'm Bored... Help!</button>
-        <div id="display-value"></div>
-      </form>
+    <form id="user-form">
+      <label for="acttype">Choose Activity Type:</label>
+      <select id="acttype" name="acttype">
+        <option value="any">Any</option>
+        <option value="education">Education</option>
+        <option value="recreational">Recreational</option>
+        <option value="social">Social</option>
+        <option value="diy">DIY</option>
+        <option value="charity">Charity</option>
+        <option value="cooking">Cooking</option>
+        <option value="relaxation">Relaxation</option>
+        <option value="busywork">Busywork</option>
+        <option value="music">Music</option>
+      </select>
+      <label for="people">Choose # of People:</label>
+      <select id="people" name="people">
+        <option value="any">Any</option>
+        <option value="solo">Solo (1)</option>
+        <option value="group">Group (2+)</option>
+      </select>
+      <label for="supdog">Choose Cost:</label>
+      <select id="supdog" name="supdog">
+        <option value="any">Any</option>
+        <option value="free">No Cost (0$)</option>
+        <option value="paid">Some Costs ($)</option>
+      </select>
+      <button id="searchBtn" type="button">I'm Bored... Help!</button>
+      <div id="display-value"></div>
+    </form>
 
-
-    <div id="container" class = "stashed">
+    <div id="container" class="stashed">
       <h1 id="resultsHeader" class="stashed"></h1>
       <h2 class="stashed">Here are some videos we think will inspire you!</h2>
     </div>
-    <div  id="container2" class="container2 stashed">
-        <div class="wrapper">
-          <div class="carouselbox" aria-role="img" aria-label="carousel">
-            <iframe width=480px height=270 class="videoNew"></iframe>
-            <button class="button5 prev">
-              ◀ Ideas
-            </button>
-            <button class="button5 next">
-              Ideas ▶ 
-            </button>
-          </div> 
-          <button class="button5" id="yessur">Stash me</button>
+    <div id="container2" class="container2 stashed">
+      <div class="wrapper">
+        <div class="carouselbox" aria-role="img" aria-label="carousel">
+          <iframe width="480px" height="270" class="videoNew"></iframe>
+          <button class="button5 prev">◀ Ideas</button>
+          <button class="button5 next">Ideas ▶</button>
         </div>
-     </div>
+        <button class="button5" id="pinActivity">Pin Activity</button>
+      </div>
+    </div>
 
-     <!-- modified by buck slightly -->
-  <section id="stashed" class="stashed">
-    <h2 class="underline">Pinned Activities</h2>
-    <ul id="oldsearch" ></ul>
-  </section> 
-     <!-- modified by buck slightly -->
+    <!-- modified by buck slightly -->
+    <section id="stashed" class="stashed">
+      <h2 class="underline">Pinned Activities</h2>
+      <ul id="oldsearch"></ul>
+    </section>
+    <!-- modified by buck slightly -->
 
-<script src = './apikeys.js'></script>
-<script src = './assets/js/script.js'></script>
-</body>
+    <script src="./apikeys.js"></script>
+    <script src="./assets/js/script.js"></script>
+  </body>
 </html>
