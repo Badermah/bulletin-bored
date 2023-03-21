@@ -17,10 +17,11 @@ var submitOption = document.getElementById("submit-option");
 var showValue = document.getElementById("user-form");
 let buttonHist = JSON.parse(localStorage.getItem("searchHist"));
 const searchButHist = document.getElementById("oldsearch");
-const stashMe = document.getElementById("yessur");
+const pinActivity = document.getElementById("pinActivity");
 let boredActivity;
 let carouselVideo;
 let videoName;
+let videoImage;
 
 // Function to display selected value on screen
 function handleSubmit(event) {
@@ -158,6 +159,7 @@ function navigate(direction) {
       carouselVideo = document.querySelector(".videoNew");
       carouselVideo.setAttribute('src', `https://www.youtube.com/embed/${currentImage.id.videoId}`)
       videoName = currentImage.snippet.title;
+      videoImage = currentImage.id.videoId;
       
     }
     
@@ -185,7 +187,7 @@ const renderSearch = function () {
           const pastActList = document.createElement('li');
           const pastActObj = document.createElement('a');
           pastActObj.textContent = `Activity: ${item[0]} | (Video: ${item[2]})`;
-          pastActObj.setAttribute('href',item[1])
+          pastActObj.setAttribute('href',`https://img.youtube.com/vi/${item[1]}/0.jpg`)
           pastActObj.setAttribute('target','_blank');
 
           pastActList.setAttribute("data-index", i);
@@ -196,6 +198,8 @@ const renderSearch = function () {
 
           pastActList.appendChild(pastActObj);
           searchButHist.appendChild(pastActList);
+          console.log(`https://img.youtube.com/vi/${item[1]}/0.jpg`)
+          
         });
       } else {
         buttonHist = [];
@@ -205,7 +209,7 @@ renderSearch();
 
 
 const keepMe = function () {
-  buttonHist.unshift([boredActivity,carouselVideo.getAttribute('src'),videoName]);
+  buttonHist.unshift([boredActivity,videoImage,videoName]);
   storeSearch();
   renderSearch();
 };
@@ -227,7 +231,7 @@ searchButHist.addEventListener("click", function(event) {
 });
 
 $searchBtn.addEventListener('click', handleSubmit);
-stashMe.addEventListener('click', keepMe);
+pinActivity.addEventListener('click', keepMe);
 
 // Buck's code below here //
 
