@@ -259,3 +259,21 @@ button:hover {
 /* #oldsearch {
   margin: 1rem auto;
 } */
+
+.buttonreformat {
+  border: none;
+  box-shadow: none;
+
+}
+
+.buttonreformat:hover {
+  transform: none;
+  box-shadow: none;
+
+}
+
+.navbar {
+  min-height: 4.5rem;
+  font-size: 1.5rem;
+
+}
