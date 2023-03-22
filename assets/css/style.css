@@ -50,7 +50,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  /* overflow: hidden; */
+  overflow-x: hidden; 
   background-image: url(../images/bulletinbg.png);
   transition: 5s;
 }
@@ -253,6 +253,7 @@ button:hover {
   display: inline-block;
   justify-content: center;
   align-items: center;
+  border-top: solid 1rem white;
 }
 
 /* #oldsearch {
