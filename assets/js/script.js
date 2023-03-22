@@ -168,36 +168,56 @@ const renderSearch = function () {
 
   if (buttonHist !== null) {
     buttonHist.forEach(function (item, i) {
-      const pastActList = document.createElement("div");
+
+      const pinnedDiv = document.createElement("div");
+      pinnedDiv.setAttribute("class", "col cardSpacing");
       
-      pastActList.setAttribute("class", "card");
+
+      const pastActList = document.createElement("div");
+      pinnedDiv.appendChild(pastActList);
+
+      
+      pastActList.setAttribute("class", "card cardSpacing");
+      
       searchButHist.appendChild(pastActList);
       const pastActImg = document.createElement("img");
       pastActImg.setAttribute("class", "card-img-top");
       pastActImg.setAttribute("alt", "YouTube Thumbnail");
+
+
+      const anchor = document.createElement("a");
+      anchor.setAttribute("href", `https://www.youtube.com/embed/${item[1]}`);
+      anchor.appendChild(pastActImg);
+      anchor.setAttribute("target", "_blank");
+      pastActList.appendChild(anchor);
+
       pastActImg.setAttribute("src", `https://img.youtube.com/vi/${item[1]}/0.jpg`);
-      pastActImg.setAttribute("href", `https://www.youtube.com/embed/${item[1]}`);
-      pastActImg.setAttribute("target", "_blank");
-      pastActList.appendChild(pastActImg);
+      // pastActImg.setAttribute("href", `https://www.youtube.com/embed/${item[1]}`);
+      // pastActImg.setAttribute("target", "_blank");
+      // pastActList.appendChild(pastActImg);
       
 
       const cardBody = document.createElement("div");
       cardBody.setAttribute("class", "card-body");
+      cardBody.setAttribute("style", "color: black;");
       pastActList.appendChild(cardBody);
 
       const cardTitle = document.createElement("h5");
       cardTitle.setAttribute("class", "card-title");
+      cardTitle.setAttribute("style", "color: black; text-shadow: none;");
       cardTitle.textContent = `Activity: ${item[0]}`;
       cardBody.appendChild(cardTitle);
 
       const cardText = document.createElement("p");
       cardText.setAttribute("class", "card-text");
+      cardText.setAttribute("style", "color: black; text-shadow: none;");
       cardText.textContent = `Video: ${item[2]}`;
       cardBody.appendChild(cardText);
 
 
       const removeBtn = document.createElement("a");
       removeBtn.setAttribute("class", "btn btn-primary button");
+      removeBtn.setAttribute("style", "text-shadow: none;");
       removeBtn.textContent = "Remove ✔️";
       cardBody.appendChild(removeBtn);
 
