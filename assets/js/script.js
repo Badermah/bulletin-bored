@@ -286,6 +286,8 @@ const newActivity = document.getElementById("new");
 const reset = document.getElementById("parameterReset");
 const letsGooooo = document.getElementById("letsGooooo");
 const resultsHeader = document.getElementById("resultsHeader");
+const home = document.getElementById("home");
+const pinnedRedirect = document.getElementById("pinnedRedirect");
 
 let activityType = "";
 let social = "";
@@ -371,6 +373,56 @@ reset.addEventListener("click", (e) => {
     $("#activityType").fadeIn(1200).css("display", "flex");
   }, "1000");
 });
+
+home.addEventListener("click", (e) => {
+  activityType = "";
+  social = "";
+  price = "";
+
+  $("#summary").fadeOut(1000);
+  $("#activityType").fadeOut(1000);
+  $("#priceTag").fadeOut(1000);
+  $("#newOrOld").fadeOut(1000);
+  $("#soloOrGroup").fadeOut(1000);
+  $("#stashed").fadeOut(1000);
+  $("#container").fadeOut(1000);
+  $("#container2").fadeOut(1000);
+  display.classList.add("display");
+  display.classList.remove("display2");
+  
+
+
+  setTimeout(() => {
+    $("#header").fadeIn(1200).css("display", "flex");
+  }, "1000");
+});
+
+pinnedRedirect.addEventListener("click", (e) => {
+  activityType = "";
+  social = "";
+  price = "";
+
+  $("#summary").fadeOut(1000);
+  $("#activityType").fadeOut(1000);
+  $("#priceTag").fadeOut(1000);
+  $("#newOrOld").fadeOut(1000);
+  $("#soloOrGroup").fadeOut(1000);
+  $("#header").fadeOut(1000);
+  $("#container").fadeOut(1000);
+  $("#container2").fadeOut(1000);
+  display.classList.remove("display");
+  display.classList.add("display2");
+  
+
+
+  setTimeout(() => {
+    $("#stashed").fadeIn(1200).css("display", "flex");
+  }, "1000");
+});
+
+
+
+
 
 letsGooooo.addEventListener("click", (e) => {
   let customURL = "?";
