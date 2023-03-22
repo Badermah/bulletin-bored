@@ -168,29 +168,64 @@ const renderSearch = function () {
 
   if (buttonHist !== null) {
     buttonHist.forEach(function (item, i) {
-      const pastActList = document.createElement("li");
-      const pastActObj = document.createElement("a");
+      const pastActList = document.createElement("div");
+      
+      pastActList.setAttribute("class", "card");
+      searchButHist.appendChild(pastActList);
       const pastActImg = document.createElement("img");
-      pastActObj.textContent = `Activity: ${item[0]} | (Video: ${item[2]})`;
-      pastActObj.setAttribute(
-        "href",
-        `https://www.youtube.com/embed/${item[1]}`
-      );
-      pastActObj.setAttribute("target", "_blank");
+      pastActImg.setAttribute("class", "card-img-top");
+      pastActImg.setAttribute("alt", "YouTube Thumbnail");
+      pastActImg.setAttribute("src", `https://img.youtube.com/vi/${item[1]}/0.jpg`);
+      pastActImg.setAttribute("href", `https://www.youtube.com/embed/${item[1]}`);
+      pastActImg.setAttribute("target", "_blank");
+      pastActList.appendChild(pastActImg);
+      
+
+      const cardBody = document.createElement("div");
+      cardBody.setAttribute("class", "card-body");
+      pastActList.appendChild(cardBody);
+
+      const cardTitle = document.createElement("h5");
+      cardTitle.setAttribute("class", "card-title");
+      cardTitle.textContent = `Activity: ${item[0]}`;
+      cardBody.appendChild(cardTitle);
+
+      const cardText = document.createElement("p");
+      cardText.setAttribute("class", "card-text");
+      cardText.textContent = `Video: ${item[2]}`;
+      cardBody.appendChild(cardText);
+
+
+      const removeBtn = document.createElement("a");
+      removeBtn.setAttribute("class", "btn btn-primary button");
+      removeBtn.textContent = "Remove ✔️";
+      cardBody.appendChild(removeBtn);
+
+
+      
+
+
+      // const pastActObj = document.createElement("a");
+      // pastActObj.textContent = `Activity: ${item[0]} | (Video: ${item[2]})`;
+      // pastActObj.setAttribute(
+      //   "href",
+      //   `https://www.youtube.com/embed/${item[1]}`
+      // );
+      // pastActObj.setAttribute("target", "_blank");
 
       pastActList.setAttribute("data-index", i);
-      pastActImg.setAttribute(
-        "src",
-        `https://img.youtube.com/vi/${item[1]}/0.jpg`
-      );
-      var button = document.createElement("button");
-      button.textContent = "Remove ✔️";
-      pastActList.appendChild(button);
+      // pastActImg.setAttribute(
+      //   "src",
+      //   `https://img.youtube.com/vi/${item[1]}/0.jpg`
+      // );
+      // var button = document.createElement("button");
+      // button.textContent = "Remove ✔️";
+      // pastActList.appendChild(button);
 
-      pastActList.appendChild(pastActImg);
-      pastActList.appendChild(pastActObj);
-      searchButHist.appendChild(pastActList);
-      console.log(`https://img.youtube.com/vi/${item[1]}/0.jpg`);
+      
+      // pastActList.appendChild(pastActObj);
+      // searchButHist.appendChild(pastActList);
+      // console.log(`https://img.youtube.com/vi/${item[1]}/0.jpg`);
     });
   } else {
     buttonHist = [];
@@ -210,7 +245,7 @@ const storeSearch = function () {
 
 searchButHist.addEventListener("click", function (event) {
   var element = event.target;
-  if (element.matches("button") === true) {
+  if (element.matches(".button") === true) {
     var index = element.parentElement.getAttribute("data-index");
     buttonHist.splice(index, 1);
 

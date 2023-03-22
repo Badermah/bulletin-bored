@@ -41,7 +41,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url(../images/bulletinbgdarkv.png);
 }
 
@@ -50,7 +50,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url(../images/bulletinbg.png);
   transition: 5s;
 }
