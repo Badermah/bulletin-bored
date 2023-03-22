@@ -41,7 +41,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url(../images/bulletinbgdarkv.png);
 }
 
@@ -50,7 +50,7 @@
   background-size: cover;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  /* overflow: hidden; */
   background-image: url(../images/bulletinbg.png);
   transition: 5s;
 }
@@ -237,6 +237,7 @@ button:hover {
 
 #stashed {
   display: none;
+  color: black;
 }
 
 #container {
@@ -246,3 +247,14 @@ button:hover {
 #container2 {
   display: none;
 }
+
+.cardSpacing {
+  margin: 1rem;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+}
+
+/* #oldsearch {
+  margin: 1rem auto;
+} */
