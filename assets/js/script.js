@@ -6,76 +6,55 @@ if (use_youtubeAPI) {
 }
 
 //query parameters -- vanilla javascript but could do JQuery
-const $searchBtn = document.getElementById("searchBtn");
-const container = document.getElementById("container"); //modified by buck//
-const container2 = document.getElementById("container2"); //modified by buck//
 var carousel = document.querySelector(".carouselbox");
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
 var index = 0;
 var currentImage;
-let data = {};
 var submitOption = document.getElementById("submit-option");
 var showValue = document.getElementById("user-form");
-let buttonHist = JSON.parse(localStorage.getItem("searchHist"));
+
+const $searchBtn = document.getElementById("searchBtn");
+const container = document.getElementById("container"); 
+const container2 = document.getElementById("container2");
 const searchButHist = document.getElementById("oldsearch");
 const pinActivity = document.getElementById("pinActivity");
+const welcome = document.getElementById("welcome");
+const display = document.getElementById("display");
+const pinned = document.getElementById("pinned");
+const newActivity = document.getElementById("new");
+const reset = document.getElementById("parameterReset");
+const letsGooooo = document.getElementById("letsGooooo");
+const resultsHeader = document.getElementById("resultsHeader");
+const home = document.getElementById("home");
+const pinnedRedirect = document.getElementById("pinnedRedirect");
+
+let data = {};
+let activityType = "";
+let social = "";
+let price = "";
 let boredActivity;
 let carouselVideo;
 let videoName;
 let videoImage;
+let buttonHist = JSON.parse(localStorage.getItem("searchHist"));
 
-// Function to display selected value on screen
-function handleSubmit(event) {
-  let customURL = "?";
-  let selectedOption = document.forms["user-form"].acttype.value;
-  let selectedOption2 = document.forms["user-form"].people.value;
-  let selectedOption3 = document.forms["user-form"].supdog.value;
-
-  if (selectedOption !== "any") {
-    customURL = customURL + "type=" + selectedOption;
-  }
-
-  if (selectedOption2 === "solo") {
-    customURL = customURL + "&maxparticipants=1";
-  } else if (selectedOption2 === "group") {
-    customURL = customURL + "&minparticipants=2";
-  }
-
-  if (selectedOption3 === "free") {
-    customURL = customURL + "&maxprice=0.09";
-  } else if (selectedOption3 === "paid") {
-    customURL = customURL + "&minprice=0.1";
-  }
-
-  callBoredAPI(customURL);
-}
 //This Bored API will produce a random activity based on as many parameters as desired
 const callBoredAPI = function (customURL) {
-  // container.innerHTML = "";
 
   fetch(`https://www.boredapi.com/api/activity${customURL}`)
     .then(function (response) {
       return response.json();
     })
+
     .then(function (boredapi) {
       if (boredapi.activity === undefined) {
-        // const activityName = document.createElement('h1');
         resultsHeader.textContent = "Try again, no activity found";
-        // $container.appendChild(activityName);
         return;
       }
 
-      // // Create a header with the activity
-      //   const activityName = document.createElement('h1');
-      boredActivity = boredapi.activity;
-      resultsHeader.textContent = "Activity: " + boredActivity;
-      //   $container.appendChild(activityName);
-      // // Temporary text to understand details about the activity
-      //   const info = document.createElement('h2');
-      //   info.textContent = 'boredapi: participants: ' + boredapi.participants + ' | ' + 'price: ' + boredapi.price + ' | ' + 'type: ' + boredapi.type + ' | ' + 'accessibility: ' + boredapi.accessibility;
-      //   $container.appendChild(info);
-      //     // helps determine whether to call youtube api or dummy api
+    boredActivity = boredapi.activity;
+    resultsHeader.textContent = "Activity: " + boredActivity;
 
       if (use_youtubeAPI) {
         callYoutubeAPI(boredapi);
@@ -94,9 +73,7 @@ const callYoutubeAPI = function (boredapi) {
       return response.json();
     })
     .then(function (newdata) {
-      // console.log(`${url}?key=${API_KEY}&type=video&part=snippet&maxResults=10&q=${boredapi.activity}`)
       data = newdata;
-
       showVideos(data);
     });
 };
@@ -121,14 +98,8 @@ const dummyYoutube = function () {
   showVideos(data);
 };
 
-// show videos
-const showVideos = function (data) {
-  // // create header Videos that may inspire you
-  //   const inspireVideos = document.createElement('h2');
-  //   inspireVideos.textContent = 'Videos that may inspire you';
-  //   container.appendChild(inspireVideos)
 
-  //loop through videos and create an embeded video for each (currently 10)
+const showVideos = function (data) {
   navigate(0);
 };
 
@@ -153,14 +124,20 @@ carousel.addEventListener("click", function () {
   window.location.href = data[index];
 });
 
-next.addEventListener("click", function (event) {
+next.addEventListener("click", (event) => {
   event.stopPropagation();
   navigate(1);
+  pinActivity.classList.remove("saved-idea");
+  pinActivity.classList.add("button5");
+  pinActivity.textContent = "Pin Activity";
 });
 
 prev.addEventListener("click", function (event) {
   event.stopPropagation();
   navigate(-1);
+  pinActivity.classList.remove("saved-idea");
+  pinActivity.classList.add("button5");
+  pinActivity.textContent = "Pin Activity";
 });
 
 const renderSearch = function () {
@@ -172,30 +149,21 @@ const renderSearch = function () {
       const pinnedDiv = document.createElement("div");
       pinnedDiv.setAttribute("class", "col cardSpacing");
       
-
       const pastActList = document.createElement("div");
-      pinnedDiv.appendChild(pastActList);
-
-      
       pastActList.setAttribute("class", "card cardSpacing");
+      pinnedDiv.appendChild(pastActList);
       
       searchButHist.appendChild(pastActList);
       const pastActImg = document.createElement("img");
       pastActImg.setAttribute("class", "card-img-top");
       pastActImg.setAttribute("alt", "YouTube Thumbnail");
-
+      pastActImg.setAttribute("src", `https://img.youtube.com/vi/${item[1]}/0.jpg`);
 
       const anchor = document.createElement("a");
       anchor.setAttribute("href", `https://www.youtube.com/embed/${item[1]}`);
       anchor.appendChild(pastActImg);
       anchor.setAttribute("target", "_blank");
       pastActList.appendChild(anchor);
-
-      pastActImg.setAttribute("src", `https://img.youtube.com/vi/${item[1]}/0.jpg`);
-      // pastActImg.setAttribute("href", `https://www.youtube.com/embed/${item[1]}`);
-      // pastActImg.setAttribute("target", "_blank");
-      // pastActList.appendChild(pastActImg);
-      
 
       const cardBody = document.createElement("div");
       cardBody.setAttribute("class", "card-body");
@@ -214,44 +182,18 @@ const renderSearch = function () {
       cardText.textContent = `Video: ${item[2]}`;
       cardBody.appendChild(cardText);
 
-
       const removeBtn = document.createElement("a");
       removeBtn.setAttribute("class", "btn btn-primary button");
       removeBtn.setAttribute("style", "text-shadow: none;");
       removeBtn.textContent = "Remove ✔️";
       cardBody.appendChild(removeBtn);
-
-
-      
-
-
-      // const pastActObj = document.createElement("a");
-      // pastActObj.textContent = `Activity: ${item[0]} | (Video: ${item[2]})`;
-      // pastActObj.setAttribute(
-      //   "href",
-      //   `https://www.youtube.com/embed/${item[1]}`
-      // );
-      // pastActObj.setAttribute("target", "_blank");
-
       pastActList.setAttribute("data-index", i);
-      // pastActImg.setAttribute(
-      //   "src",
-      //   `https://img.youtube.com/vi/${item[1]}/0.jpg`
-      // );
-      // var button = document.createElement("button");
-      // button.textContent = "Remove ✔️";
-      // pastActList.appendChild(button);
 
-      
-      // pastActList.appendChild(pastActObj);
-      // searchButHist.appendChild(pastActList);
-      // console.log(`https://img.youtube.com/vi/${item[1]}/0.jpg`);
     });
   } else {
     buttonHist = [];
   }
 };
-renderSearch();
 
 const keepMe = function () {
   buttonHist.unshift([boredActivity, videoImage, videoName]);
@@ -274,36 +216,24 @@ searchButHist.addEventListener("click", function (event) {
   }
 });
 
-$searchBtn.addEventListener("click", handleSubmit);
-pinActivity.addEventListener("click", keepMe);
-
-// Buck's code below here //
-
-const welcome = document.getElementById("welcome");
-const display = document.getElementById("display");
-const pinned = document.getElementById("pinned");
-const newActivity = document.getElementById("new");
-const reset = document.getElementById("parameterReset");
-const letsGooooo = document.getElementById("letsGooooo");
-const resultsHeader = document.getElementById("resultsHeader");
-const home = document.getElementById("home");
-const pinnedRedirect = document.getElementById("pinnedRedirect");
-
-let activityType = "";
-let social = "";
-let price = "";
+pinActivity.addEventListener("click", (e) => {
+  pinActivity.classList.remove("button5");
+  pinActivity.classList.add("saved-idea");
+  pinActivity.textContent = "Saved!";
+  keepMe();
+})
 
 welcome.addEventListener("click", (e) => {
   $("#header").fadeOut(1000);
   setTimeout(() => {
-    $("#newOrOld").fadeIn(1200).css("display", "flex");
+    $("#newOrOld").fadeIn(1000).css("display", "flex");
   }, "1000");
 });
 
 newActivity.addEventListener("click", (e) => {
   $("#newOrOld").fadeOut(1000);
   setTimeout(() => {
-    $("#activityType").fadeIn(1200).css("display", "flex");
+    $("#activityType").fadeIn(1000).css("display", "flex");
   }, "1000");
 });
 
@@ -312,7 +242,7 @@ pinned.addEventListener("click", (e) => {
   setTimeout(() => {
     display.classList.remove("display");
     display.classList.add("display2");
-    $("#stashed").fadeIn(1200).css("display", "flex");
+    $("#stashed").fadeIn(1000).css("display", "flex");
   }, "1500");
 });
 
@@ -321,7 +251,7 @@ function activityTypeChoice(objButton1) {
   console.log(activityType);
   $("#activityType").fadeOut(1000);
   setTimeout(() => {
-    $("#soloOrGroup").fadeIn(1200).css("display", "flex");
+    $("#soloOrGroup").fadeIn(1000).css("display", "flex");
   }, "1000");
 }
 
@@ -330,7 +260,7 @@ function participants(objButton2) {
   console.log(social);
   $("#soloOrGroup").fadeOut(1000);
   setTimeout(() => {
-    $("#priceTag").fadeIn(1200).css("display", "flex");
+    $("#priceTag").fadeIn(1000).css("display", "flex");
   }, "1000");
 }
 
@@ -339,27 +269,26 @@ function cost(objButton3) {
   console.log(price);
 
   let actTypeString = "You're down for anything, ";
-  if (activityType != "any") {
-    actTypeString = "You'd like to do something " + activityType + " related, ";
-  }
+    if (activityType != "any") {
+      actTypeString = "You'd like to do something " + activityType + " related, ";
+    }
 
   let socialString = "";
-  if (social === "solo") {
-    socialString = "on your own, ";
-  } else if (social === "group") {
-    socialString = "with a group, ";
-  }
+    if (social === "solo") {
+      socialString = "on your own, ";
+    } else if (social === "group") {
+      socialString = "with a group, ";
+    }
 
   let priceString = "and cost isn't a huge concern?";
-  if (price === "free") {
-    priceString = "and we're looking for little to no upfront investment?";
-  }
+    if (price === "free") {
+      priceString = "and we're looking for little to no upfront investment?";
+    }
 
   $("#priceTag").fadeOut(1000);
-  document.getElementById("summaryText").textContent =
-    actTypeString + socialString + priceString;
+  document.getElementById("summaryText").textContent = actTypeString + socialString + priceString;
   setTimeout(() => {
-    $("#summary").fadeIn(1200).css("display", "flex");
+    $("#summary").fadeIn(1000).css("display", "flex");
   }, "1000");
 }
 
@@ -370,7 +299,7 @@ reset.addEventListener("click", (e) => {
 
   $("#summary").fadeOut(1000);
   setTimeout(() => {
-    $("#activityType").fadeIn(1200).css("display", "flex");
+    $("#activityType").fadeIn(1000).css("display", "flex");
   }, "1000");
 });
 
@@ -390,10 +319,8 @@ home.addEventListener("click", (e) => {
   display.classList.add("display");
   display.classList.remove("display2");
   
-
-
   setTimeout(() => {
-    $("#header").fadeIn(1200).css("display", "flex");
+    $("#header").fadeIn(1000).css("display", "flex");
   }, "1000");
 });
 
@@ -413,16 +340,10 @@ pinnedRedirect.addEventListener("click", (e) => {
   display.classList.remove("display");
   display.classList.add("display2");
   
-
-
   setTimeout(() => {
-    $("#stashed").fadeIn(1200).css("display", "flex");
+    $("#stashed").fadeIn(1000).css("display", "flex");
   }, "1000");
 });
-
-
-
-
 
 letsGooooo.addEventListener("click", (e) => {
   let customURL = "?";
@@ -451,7 +372,7 @@ letsGooooo.addEventListener("click", (e) => {
   display.classList.add("display2");
   callBoredAPI(customURL);
   setTimeout(() => {
-    $("#container").fadeIn(1200).css("display", "flex");
-    $("#container2").fadeIn(1200).css("display", "flex");
+    $("#container").fadeIn(1000).css("display", "flex");
+    $("#container2").fadeIn(1000).css("display", "flex");
   }, "1000");
 });

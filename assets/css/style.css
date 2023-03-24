@@ -1,6 +1,6 @@
+
 .wrapper {
   display: flex;
-  /* flex-wrap: wrap; */
   align-items: center;
   justify-content: center;
 }
@@ -13,19 +13,6 @@
   align-items: center;
   justify-content: center;
 }
-/* .prev,.next {
-  width: 100px;
-  height: 30px;
-
-}
- */
-/* #yessur {
-  background-color: orange;
-  width: 100px;
-  height: 30px;
-} */
-
-/* Buck's code below here */
 
 :root {
   font-size: 62.5%;
@@ -36,23 +23,30 @@
   color: white;
 }
 
+.nav-stay-top {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
 .display {
   background-position: center center;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
-  /* overflow: hidden; */
   background-image: url(../images/bulletinbgdarkv.png);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  overflow-x: hidden;
+  transition: ease-in-out 2s;
 }
 
 .display2 {
   background-position: center center;
   background-size: cover;
-  width: 100vw;
-  height: 100vh;
+  background-attachment: fixed;
   overflow-x: hidden; 
   background-image: url(../images/bulletinbg.png);
-  transition: 5s;
+  transition: ease-in-out 2s;
+  background-repeat: no-repeat;
 }
 
 .header {
@@ -79,10 +73,8 @@
   flex-direction: column;
   flex-wrap: wrap;
   justify-content: center;
-  align-items: normal;
+  align-items: center;
   margin-top: 1.8rem;
-  margin-left: -28rem;
-  max-height: 75vh;
 }
 
 .options {
@@ -107,6 +99,9 @@
 }
 
 .underline {
+  display: flex;
+  justify-content: center;
+  text-align: center;
   text-decoration: underline;
   text-underline-offset: 1.5rem;
 }
@@ -114,7 +109,7 @@
 h1 {
   font-size: 5.4rem;
   margin-bottom: 3rem;
-  line-height: 1.2;
+  line-height: 1.5;
   text-align: center;
 }
 
@@ -122,19 +117,19 @@ h2 {
   font-size: 4.2rem;
   font-weight: 700;
   margin-bottom: 4rem;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 h3 {
   font-size: 3rem;
   margin-bottom: 3rem;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 h4 {
   font-size: 1.8rem;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  line-height: 1.5;
 }
 
 button {
@@ -248,6 +243,10 @@ button:hover {
   display: none;
 }
 
+#default {
+  cursor: default;
+}
+
 .cardSpacing {
   margin: 1rem;
   display: inline-block;
@@ -256,24 +255,32 @@ button:hover {
   border-top: solid 1rem white;
 }
 
-/* #oldsearch {
-  margin: 1rem auto;
-} */
-
 .buttonreformat {
   border: none;
   box-shadow: none;
-
 }
 
 .buttonreformat:hover {
   transform: none;
   box-shadow: none;
-
 }
 
 .navbar {
   min-height: 4.5rem;
   font-size: 1.5rem;
+}
 
+.saved-idea {
+  color: black;
+  font-size: 2rem;
+  text-align: center;
+  text-decoration: none;
+  height: 20rem;
+  width: 20rem;
+  font-size: 2rem;
+  margin: 3rem 1.5rem 3rem 1.5rem;
+  padding: 1rem 1.5rem;
+  background-color: rgb(255, 225, 58);
+  text-shadow: none;
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
