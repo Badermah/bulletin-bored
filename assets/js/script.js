@@ -1,9 +1,7 @@
 const url = "https://www.googleapis.com/youtube/v3/search";
-let API_KEY;
-let use_youtubeAPI = confirm("Do you want to use API KEY?"); //false will pull up a default set of video to conserve API KEY limit -- true will query actual YouTube API (100 queries per day per key)
-if (use_youtubeAPI) {
-  API_KEY = "AIzaSyD2PmplJhcQf_D1kXvvqHwJW8MYPyhzdKg";
-}
+let youTubeApiKeys = ["AIzaSyD2PmplJhcQf_D1kXvvqHwJW8MYPyhzdKg", "AIzaSyDSRVOnBgzTFsC6Z5pNddA4XFXFgIcT0lE", "AIzaSyBpza-PA_3AcF09iqQkA6Jgd2k0-jmRanc"];
+const API_KEY = youTubeApiKeys[Math.floor(Math.random() * youTubeApiKeys.length)];
+let use_youtubeAPI = true;
 
 //query parameters -- vanilla javascript but could do JQuery
 var carousel = document.querySelector(".carouselbox");
