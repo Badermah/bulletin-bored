@@ -193,7 +193,6 @@ const renderSearch = function () {
   }
 };
 
-renderSearch();
 
 const keepMe = function () {
   buttonHist.unshift([boredActivity, videoImage, videoName]);
@@ -208,7 +207,7 @@ const storeSearch = function () {
 searchButHist.addEventListener("click", function (event) {
   var element = event.target;
   if (element.matches(".button") === true) {
-    var index = element.parentElement.getAttribute("data-index");
+    var index = element.parentElement.parentElement.getAttribute("data-index");
     buttonHist.splice(index, 1);
 
     storeSearch();
