@@ -6,8 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Bulletin Bored</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <!--style reset added by Buck-->
-
     <!-- Font Awesome -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
@@ -26,25 +24,15 @@
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
+
   <body id="display" class="display">
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-stay-top">
       <div class="container-fluid">
-        <a class="navbar-brand" href="#">Bulletin Bored</a>
-        <button
-          class="navbar-toggler"
-          type="button"
-          data-mdb-toggle="collapse"
-          data-mdb-target="#navbarNav"
-          aria-controls="navbarNav"
-          aria-expanded="false"
-          aria-label="Toggle navigation"
-        >
-          <i class="fas fa-bars"></i>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+        <a id="default" class="navbar-brand" href="#">Bulletin Bored</a>
+        <div id="navbarNav">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <button id="home" class="nav-link active buttonreformat " aria-current="page" href="#">Home</button>
+              <button id="home" class="nav-link buttonreformat" aria-current="page" href="#">Home</button>
             </li>
             <li class="nav-item">
               <button id="pinnedRedirect" class="nav-link buttonreformat" href="#">Pinned Activities</button>
@@ -53,10 +41,10 @@
         </div>
       </div>
     </nav>
-    <!--added by Buck-->
+    
     <header id="header" class="header">
       <h1 class="underline">Welcome to Bulletin Bored</h1>
-      <button type="button" id="welcome">Let's find something to do</button>
+      <button type="button" class="button2" id="welcome">Let's find something to do</button>
     </header>
 
     <section id="newOrOld" class="header">
@@ -68,83 +56,25 @@
     <section id="activityType" class="menu">
       <h1 class="underline">What sounds good?</h1>
       <div class="selectors">
-        <button onclick="activityTypeChoice(this)" class="button3" value="any">
-          Any
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="education"
-        >
-          Education
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="recreational"
-        >
-          Recreational
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="social"
-        >
-          Social
-        </button>
-        <button onclick="activityTypeChoice(this)" class="button3" value="diy">
-          DIY
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="charity"
-        >
-          Charity
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="cooking"
-        >
-          Cooking
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="relaxation"
-        >
-          Relaxation
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="busywork"
-        >
-          Busywork
-        </button>
-        <button
-          onclick="activityTypeChoice(this)"
-          class="button3"
-          value="music"
-        >
-          Music
-        </button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="any">Any</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="education">Education</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="recreational">Recreational</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="social">Social</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="diy">DIY</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="charity">Charity</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="cooking">Cooking</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="relaxation">Relaxation</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="busywork">Busywork</button>
+        <button onclick="activityTypeChoice(this)" class="button3" value="music">Music</button>
       </div>
     </section>
 
     <section id="soloOrGroup" class="menu">
       <h1 class="underline">Feeling Social?</h1>
       <div class="options">
-        <button onclick="participants(this)" class="button3" value="any">
-          Any
-        </button>
-        <button onclick="participants(this)" class="button3" value="solo">
-          Solo
-        </button>
-        <button onclick="participants(this)" class="button3" value="group">
-          Group (2+)
-        </button>
+        <button onclick="participants(this)" class="button3" value="any">Any</button>
+        <button onclick="participants(this)" class="button3" value="solo">Solo</button>
+        <button onclick="participants(this)" class="button3" value="group">Group (2+)</button>
       </div>
     </section>
 
@@ -152,12 +82,8 @@
       <h1 class="underline">Is Cost a Factor?</h1>
       <div class="options">
         <button onclick="cost(this)" class="button3" value="any">Any</button>
-        <button onclick="cost(this)" class="button3" value="free">
-          No Cost
-        </button>
-        <button onclick="cost(this)" class="button3" value="paid">
-          Some Cost
-        </button>
+        <button onclick="cost(this)" class="button3" value="free">No Cost</button>
+        <button onclick="cost(this)" class="button3" value="paid">Some Cost</button>
       </div>
     </section>
 
@@ -168,37 +94,6 @@
       <button id="letsGooooo" class="button4">Let's do it!</button>
       <button id="parameterReset" class="button4">Well actually...</button>
     </section>
-    <!--^ added by Buck ^-->
-
-    <form id="user-form">
-      <label for="acttype">Choose Activity Type:</label>
-      <select id="acttype" name="acttype">
-        <option value="any">Any</option>
-        <option value="education">Education</option>
-        <option value="recreational">Recreational</option>
-        <option value="social">Social</option>
-        <option value="diy">DIY</option>
-        <option value="charity">Charity</option>
-        <option value="cooking">Cooking</option>
-        <option value="relaxation">Relaxation</option>
-        <option value="busywork">Busywork</option>
-        <option value="music">Music</option>
-      </select>
-      <label for="people">Choose # of People:</label>
-      <select id="people" name="people">
-        <option value="any">Any</option>
-        <option value="solo">Solo (1)</option>
-        <option value="group">Group (2+)</option>
-      </select>
-      <label for="supdog">Choose Cost:</label>
-      <select id="supdog" name="supdog">
-        <option value="any">Any</option>
-        <option value="free">No Cost (0$)</option>
-        <option value="paid">Some Costs ($)</option>
-      </select>
-      <button id="searchBtn" type="button">I'm Bored... Help!</button>
-      <div id="display-value"></div>
-    </form>
 
     <div id="container" class="stashed">
       <h1 id="resultsHeader" class="stashed"></h1>
@@ -215,22 +110,10 @@
       </div>
     </div>
 
-    <!-- modified by buck slightly -->
     <section id="stashed" class="stashed">
       <h2 class="underline ">Pinned Activities</h2>
       <div id="oldsearch" class="row row-cols-1 row-cols-sm-4 g-4 justify-content-center"></div>
-
-      <!-- <div class="card">
-        <img src="https://mdbcdn.b-cdn.net/img/new/standard/nature/184.webp" class="card-img-top" alt="Fissure in Sandstone"/>
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#!" class="btn btn-primary">Button</a>
-        </div>
-      </div> -->
-
     </section>
-    <!-- modified by buck slightly -->
 
     <script src="./apikeys.js"></script>
     <script src="./assets/js/script.js"></script>
