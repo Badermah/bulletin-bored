@@ -148,7 +148,7 @@ const renderSearch = function () {
       pinnedDiv.setAttribute("class", "col cardSpacing");
       
       const pastActList = document.createElement("div");
-      pastActList.setAttribute("class", "card cardSpacing");
+      pastActList.setAttribute("class", "card cardSpacing card-sizing");
       pinnedDiv.appendChild(pastActList);
       
       searchButHist.appendChild(pastActList);
@@ -316,6 +316,9 @@ home.addEventListener("click", (e) => {
   $("#stashed").fadeOut(1000);
   $("#container").fadeOut(1000);
   $("#container2").fadeOut(1000);
+  pinActivity.classList.remove("saved-idea");
+  pinActivity.classList.add("button5");
+  pinActivity.textContent = "Pin Activity";
   display.classList.add("display");
   display.classList.remove("display2");
   
@@ -337,6 +340,9 @@ pinnedRedirect.addEventListener("click", (e) => {
   $("#header").fadeOut(1000);
   $("#container").fadeOut(1000);
   $("#container2").fadeOut(1000);
+  pinActivity.classList.remove("saved-idea");
+  pinActivity.classList.add("button5");
+  pinActivity.textContent = "Pin Activity";
   display.classList.remove("display");
   display.classList.add("display2");
   
