@@ -193,8 +193,7 @@ const renderSearch = function () {
   }
 };
 
- renderSearch();
- 
+
 const keepMe = function () {
   buttonHist.unshift([boredActivity, videoImage, videoName]);
   storeSearch();
