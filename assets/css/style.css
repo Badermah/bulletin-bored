@@ -1,4 +1,5 @@
 
+/*These first two classes are used exclusively for formatting the video carousel */
 .wrapper {
   display: flex;
   align-items: center;
@@ -14,6 +15,7 @@
   justify-content: center;
 }
 
+/* Establishes an rem of 10 pixels */
 :root {
   font-size: 62.5%;
 }
@@ -22,13 +24,15 @@
   font-family: Arial, Helvetica, sans-serif;
   color: white;
 }
-
+ 
+/* This class makes the navbar stay at the top of the page */
 .nav-stay-top {
   position: sticky;
   top: 0;
   z-index: 1000;
 }
 
+/* This class sets the darkened bulletin board background image */
 .display {
   background-position: center center;
   background-size: cover;
@@ -39,6 +43,7 @@
   transition: ease-in-out 2s;
 }
 
+/* This class sets the brighter bulletin board background image */
 .display2 {
   background-position: center center;
   background-size: cover;
@@ -49,6 +54,8 @@
   background-repeat: no-repeat;
 }
 
+
+/*The next few classes set the orientation of elements, as needed, based on best appearance by menu size */
 .header {
   display: flex;
   flex-direction: column;
@@ -87,6 +94,7 @@
   max-height: 75vh;
 }
 
+/* This class is primarily used to give certain fonts the appearance of a white color with a black outline while maintaining the standard orientation*/
 .stashed {
   margin-top: 0.8rem;
   display: flex;
@@ -98,6 +106,7 @@
     -1px -1px 0 #000;
 }
 
+/* Used to give certain lines of text an underline decoration */
 .underline {
   display: flex;
   justify-content: center;
@@ -106,6 +115,7 @@
   text-underline-offset: 1.5rem;
 }
 
+/* Custom header formatting */
 h1 {
   font-size: 5.4rem;
   margin-bottom: 3rem;
@@ -132,6 +142,7 @@ h4 {
   line-height: 1.5;
 }
 
+/* The next few classes and element selector are used to give a relatively consistent button appearance throughtout the app */
 button {
   border: 0.1rem solid white;
   background-color: transparent;
@@ -203,6 +214,7 @@ button:hover {
   transition: ease-in 150ms;
 }
 
+/* The following series of ids are used to give elements in the html a default display of none, so that we can control when and how certain elements appear on the page */
 #newOrOld {
   display: none;
 }
@@ -243,6 +255,7 @@ button:hover {
   display: none;
 }
 
+/* The following classes and id were created to modify certain styling traits from the mdbootstrap elements we incorporated */
 #default {
   cursor: default;
 }
@@ -270,6 +283,7 @@ button:hover {
   font-size: 1.5rem;
 }
 
+/* This class is used to conditionally apply a button styling change when an activity is saved, to provide some user feedback */
 .saved-idea {
   color: black;
   font-size: 2rem;
@@ -285,6 +299,7 @@ button:hover {
   clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
 }
 
+/* Sets a min width for the saved activities */
 .card-sizing {
   min-width: 40rem;
 }
