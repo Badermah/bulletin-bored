@@ -1,9 +1,11 @@
+
+// This code cycles through a number apikeys for youtube search, this method allows for ~300 calls a day 
 const url = "https://www.googleapis.com/youtube/v3/search";
 let youTubeApiKeys = ["AIzaSyD2PmplJhcQf_D1kXvvqHwJW8MYPyhzdKg", "AIzaSyDSRVOnBgzTFsC6Z5pNddA4XFXFgIcT0lE", "AIzaSyBpza-PA_3AcF09iqQkA6Jgd2k0-jmRanc"];
 const API_KEY = youTubeApiKeys[Math.floor(Math.random() * youTubeApiKeys.length)];
 let use_youtubeAPI = true;
 
-//query parameters -- vanilla javascript but could do JQuery
+// Declaration of variables 
 var carousel = document.querySelector(".carouselbox");
 var next = carousel.querySelector(".next");
 var prev = carousel.querySelector(".prev");
@@ -37,7 +39,7 @@ let videoName;
 let videoImage;
 let buttonHist = JSON.parse(localStorage.getItem("searchHist"));
 
-//This Bored API will produce a random activity based on as many parameters as desired
+// This Bored API will produce a random activity based on as many parameters as desired
 const callBoredAPI = function (customURL) {
 
   fetch(`https://www.boredapi.com/api/activity${customURL}`)
@@ -76,7 +78,7 @@ const callYoutubeAPI = function (boredapi) {
     });
 };
 
-// dummy object of data containing videos
+// dummy object of data containing videos. This was used during testing and is not utilized in live app. 
 const dummyYoutube = function () {
   data = {
     items: [
@@ -101,6 +103,7 @@ const showVideos = function (data) {
   navigate(0);
 };
 
+// This function loads our video carousel with the querried video data from the youtube api
 function navigate(direction) {
   index = index + direction;
   if (index < 0) {
@@ -118,6 +121,7 @@ function navigate(direction) {
   videoImage = currentImage.id.videoId;
 }
 
+// The next few functions add event listeners to button clicks on and below the video carousel to navigate the returned video options
 carousel.addEventListener("click", function () {
   window.location.href = data[index];
 });
@@ -138,6 +142,8 @@ prev.addEventListener("click", function (event) {
   pinActivity.textContent = "Pin Activity";
 });
 
+
+// The renderSearch function creates and sets the attributes of the card elements that store saved activies 
 const renderSearch = function () {
   searchButHist.innerHTML = "";
 
@@ -195,6 +201,7 @@ const renderSearch = function () {
 
 renderSearch();
 
+// The next three functions work together to store activity searches locally, and call on local storage to retrieve saved activities
 const keepMe = function () {
   buttonHist.unshift([boredActivity, videoImage, videoName]);
   storeSearch();
@@ -216,6 +223,7 @@ searchButHist.addEventListener("click", function (event) {
   }
 });
 
+// This function calls the the keepMe function when the corresponding button is clicked and handles some button styling
 pinActivity.addEventListener("click", (e) => {
   pinActivity.classList.remove("button5");
   pinActivity.classList.add("saved-idea");
@@ -223,6 +231,7 @@ pinActivity.addEventListener("click", (e) => {
   keepMe();
 })
 
+// This function makes the welcome screen disappear and the option to start a new search or go to pinned activites
 welcome.addEventListener("click", (e) => {
   $("#header").fadeOut(1000);
   setTimeout(() => {
@@ -230,6 +239,7 @@ welcome.addEventListener("click", (e) => {
   }, "1000");
 });
 
+// This functon brings up the first menu of buttons when selecting a new activity
 newActivity.addEventListener("click", (e) => {
   $("#newOrOld").fadeOut(1000);
   setTimeout(() => {
@@ -237,6 +247,7 @@ newActivity.addEventListener("click", (e) => {
   }, "1000");
 });
 
+// This function brings up the pinned activities 
 pinned.addEventListener("click", (e) => {
   $("#newOrOld").fadeOut(1000);
   setTimeout(() => {
@@ -246,27 +257,30 @@ pinned.addEventListener("click", (e) => {
   }, "1500");
 });
 
+// After selecting an activity theme this function brings up the next menu that lists participant options
 function activityTypeChoice(objButton1) {
   activityType = objButton1.value;
-  console.log(activityType);
+  // console.log(activityType);
   $("#activityType").fadeOut(1000);
   setTimeout(() => {
     $("#soloOrGroup").fadeIn(1000).css("display", "flex");
   }, "1000");
 }
 
+// After selecting the number of participants this function brings up the menu for cost options
 function participants(objButton2) {
   social = objButton2.value;
-  console.log(social);
+  // console.log(social);
   $("#soloOrGroup").fadeOut(1000);
   setTimeout(() => {
     $("#priceTag").fadeIn(1000).css("display", "flex");
   }, "1000");
 }
 
+// After selecting the cost option, this function builds a string based on the users selections and gives the use the option to continue with their search or start over
 function cost(objButton3) {
   price = objButton3.value;
-  console.log(price);
+  // console.log(price);
 
   let actTypeString = "You're down for anything, ";
     if (activityType != "any") {
@@ -292,6 +306,7 @@ function cost(objButton3) {
   }, "1000");
 }
 
+// If the user elects to start over this function will take them back to the first menu where they can select a new activity theme
 reset.addEventListener("click", (e) => {
   activityType = "";
   social = "";
@@ -303,6 +318,7 @@ reset.addEventListener("click", (e) => {
   }, "1000");
 });
 
+// This button, located on the navbar, gives the user the option to return to the welcome screen from anywhere within the app
 home.addEventListener("click", (e) => {
   activityType = "";
   social = "";
@@ -327,6 +343,7 @@ home.addEventListener("click", (e) => {
   }, "1000");
 });
 
+// This button, located on the navbar, gives the user the option to go to the pinned activites screen from anywhere within the app
 pinnedRedirect.addEventListener("click", (e) => {
   activityType = "";
   social = "";
@@ -351,6 +368,7 @@ pinnedRedirect.addEventListener("click", (e) => {
   }, "1000");
 });
 
+// If the user elects to go forward with their search this function builds a custom url based on their selected parameters to run through the bored api, and subsequently the youtube search api, and then brings the user to the results page
 letsGooooo.addEventListener("click", (e) => {
   let customURL = "?";
   let selectedOption = activityType;

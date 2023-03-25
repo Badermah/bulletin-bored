@@ -21,11 +21,17 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.2.0/mdb.min.css"
       rel="stylesheet"
     />
+    <!-- Our css reset and custom style sheet -->
     <link rel="stylesheet" href="./assets/css/reset.css" />
     <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
   </head>
 
   <body id="display" class="display">
+
+                    <!-------------------->
+                    <!-- Navigation Bar -->
+                    <!-------------------->
+
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark nav-stay-top">
       <div class="container-fluid">
         <a id="default" class="navbar-brand" href="#">Bulletin Bored</a>
@@ -42,16 +48,28 @@
       </div>
     </nav>
     
+                    <!-------------------->
+                    <!-- Welcome Screen -->
+                    <!-------------------->
+
     <header id="header" class="header">
       <h1 class="underline">Welcome to Bulletin Bored</h1>
       <button type="button" class="button2" id="welcome">Let's find something to do</button>
     </header>
+
+            <!-------------------------------------------->
+            <!-- New Search or Pinned Activities Screen -->
+            <!-------------------------------------------->
 
     <section id="newOrOld" class="header">
       <h2 class="underline">What are you thinking?</h2>
       <button type="button" id="new" class="button2">Something New</button>
       <button type="button" id="pinned" class="button2">Pinned Activities</button>
     </section>
+
+            <!--------------------------------------------->
+            <!-- Choose a Theme for your Activity Search -->
+            <!--------------------------------------------->
 
     <section id="activityType" class="menu">
       <h1 class="underline">What sounds good?</h1>
@@ -69,6 +87,10 @@
       </div>
     </section>
 
+                    <!-------------------------->
+                    <!-- Choose Solo or Group -->
+                    <!-------------------------->
+
     <section id="soloOrGroup" class="menu">
       <h1 class="underline">Feeling Social?</h1>
       <div class="options">
@@ -77,6 +99,10 @@
         <button onclick="participants(this)" class="button3" value="group">Group (2+)</button>
       </div>
     </section>
+
+                    <!------------------------->
+                    <!-- Choose Free or Paid -->
+                    <!------------------------->
 
     <section id="priceTag" class="menu">
       <h1 class="underline">Is Cost a Factor?</h1>
@@ -87,6 +113,11 @@
       </div>
     </section>
 
+                <!----------------------------------->
+                <!-- User Selection Summary Screen -->
+                <!--      Proceed or Restart?      -->
+                <!----------------------------------->
+
     <section id="summary" class="menu">
       <h1 class="underline">Got it!</h1>
       <h2>So just to be clear...</h2>
@@ -95,6 +126,10 @@
       <button id="parameterReset" class="button4">Well actually...</button>
     </section>
 
+              <!--------------------------------------->
+              <!-- Search Results and Video Carousel -->
+              <!--------------------------------------->
+              
     <div id="container" class="stashed">
       <h1 id="resultsHeader" class="stashed"></h1>
       <h2 class="stashed">Here are some videos we think will inspire you!</h2>
@@ -110,6 +145,10 @@
       </div>
     </div>
 
+                  <!------------------------------>
+                  <!-- Pinned Activities Screen -->
+                  <!------------------------------>
+                  
     <section id="stashed" class="stashed">
       <h2 class="underline ">Pinned Activities</h2>
       <div id="oldsearch" class="row row-cols-1 row-cols-sm-4 g-4 justify-content-center"></div>
